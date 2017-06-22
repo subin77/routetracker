@@ -1,0 +1,92 @@
+<body >
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+
+      <table>
+        <tr>
+           <td >Year</td>
+           <td><input type="text" placeholder="Enter Year" [(ngModel)]="vehicleModel.vehicleYear"></td>
+        </tr>
+        <tr>
+          <td >Make</td>
+          <td><input type="text" placeholder="Enter Make" [(ngModel)]="vehicleModel.make"></td>
+        </tr>
+          <tr>
+          <td>Registration Number</td>
+          <td><input type="text" placeholder="Enter Registration Number" [(ngModel)]="vehicleModel.regsNum"></td>
+          </tr>
+          <tr>
+          <td>Status</td>
+          <td><select name="Status"[(ngModel)]="vehicleModel.status">
+              <option> Choose Status</option>
+              <option value ="ON" > ON</option>
+              <option value ="OFF" > OFF</option>
+            </select>
+          </td>
+          </tr>
+          <tr>
+          <td>Type</td>
+          <td><select name="Type"[(ngModel)]="vehicleModel.type">
+              <option> Choose Type</option>
+              <option value ="Coupe" > Coupe</option>
+              <option value ="Sedan" > Sedan</option>
+              <option value ="SUV" > SUV</option>
+              <option value ="Truck" > Truck</option>
+              <option value ="MiniVan" > MiniVan</option>
+              <option value ="Bus" > Bus</option>
+            </select>
+            </td>
+          </tr>
+          <input  type="button" value="POST" (click)="postVehicle()" *ngIf="!edit">
+      </table>
+
+      <table *ngIf="edit">
+        <tr>
+           <td>VehicleId:</td>
+           <td><input type="text" [(ngModel)]="vehicleModel.vehicleId" disabled></td>
+        </tr>
+        <tr>
+           <td>Year</td>
+           <td><input type="text" [(ngModel)]="vehicleModel.vehicleYear"></td>
+        </tr>
+        <tr>
+          <td>Make</td>
+          <td><input type="text" [(ngModel)]="vehicleModel.make"></td>
+        </tr>
+          <tr>
+          <td>Registration Number</td>
+          <td><input type="text" [(ngModel)]="vehicleModel.regsNum"></td>
+          </tr>
+          <tr>
+          <td>Status</td>
+          <td><select name="Status"[(ngModel)]="vehicleModel.status">
+              <option> Choose Status</option>
+              <option value ="ON" > ON</option>
+              <option value ="OFF" > OFF</option>
+            </select>
+            </td>
+          </tr>
+          <tr>
+          <td>Type</td>
+          <td>
+            <select name="Type"[(ngModel)]="vehicleModel.type">
+              <option> Choose Type</option>
+              <option value ="Coupe" > Coupe</option>
+              <option value ="Sedan" > Sedan</option>
+              <option value ="SUV" > SUV</option>
+              <option value ="Truck" > Truck</option>
+              <option value ="MiniVan" > MiniVan</option>
+              <option value ="Bus" > Bus</option>
+            </select>
+          </td>
+          </tr>
+      </table>
+
+    </div> 
+  </div>
+</div>
+</body>
+    
+

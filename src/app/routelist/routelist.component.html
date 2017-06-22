@@ -1,0 +1,106 @@
+<body>
+      <div class="col-md-8">
+        <table class="table table-hover">
+          <tr>
+            <th style="width:30px">ID</th>
+            <th style="width:85px"> Start Dest</th>
+            <th style="width:85px">End Dest</th>
+            <th style="width:85px"> Dept Time</th>
+            <th style="width:85px">Arv Time</th>
+            <th style="width:200px">Route Name</th>
+            <th style="width:60px">Status</th>
+            <th style="width:30px">Action</th>
+          </tr>
+          <tr *ngFor="let route of routeList ">
+            <td> {{route.id}}</td>
+            <td> {{route.startDestination}}</td>
+            <td>{{route.endDestination}}</td>
+            <td>{{route.departTime}}</td>
+            <td>{{route.arrivalTime}}</td>
+            <td>{{route.routeName}}</td>
+            <td>{{route.status}}</td>
+            <td><input style="background-color: lightgreen" type="button" value="Edit" (click)="putButton(route)"></td>
+            <td><input style="background-color: lightblue" type="button" value="Remove" (click)="deleteRoute(route.id)"></td>
+
+          </tr>
+        </table>
+      </div>
+      <div>
+      <table>
+        <tr>
+        
+        <td>Search<span class="glyphicon glyphicon-search"></span></td>
+        <td><select [(ngModel)]="searchBy">
+          <option value="id">Id</option>
+          <option value="searchRoute">Name</option>
+          </select></td>
+        <td><input type="text" [(ngModel)]="searchValue" (ngModelChange)="searchRoute()"></td>
+        
+        </tr>
+        </table>
+        </div>
+      <div>
+      <table align="right" *ngIf="edit">
+        <tr>
+           <td>Start Dest</td>
+           <td><select name="Start Destination"[(ngModel)]="routelistModel.startDestination">
+              <option> Choose Dest</option>
+              <option value ="Dallas" > Dallas</option>
+              <option value ="Arlington" > Arlington</option>
+              <option value ="Fort Worth" > Fort Worth</option>
+              <option value ="Austin" > Austin</option>
+              <option value ="San Antonio" > San Antonio</option>
+              <option value ="Commerce" > Commerce</option>
+              <option value ="Coppell" > Coppell</option>
+              <option value ="Farmers Ranch" > Farmers Ranch</option>
+              <option value ="Addison" > Addison</option>
+              <option value ="Mckinney" > Mckinney</option>
+              <option value ="Plano" > Plano</option>
+              <option value ="Grapevine" > Grapevine</option>
+              <option value ="Wiley" > Wiley</option>
+              <option value ="Irving" > Irving</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td>End Dest</td>
+          <td><select name="End Destination"[(ngModel)]="routelistModel.endDestination">
+              <option> Choose Dest</option>
+              <option value ="Dallas" > Dallas</option>
+              <option value ="Arlington" > Arlington</option>
+              <option value ="Fort Worth" > Fort Worth</option>
+              <option value ="Austin" > Austin</option>
+              <option value ="San Antonio" > San Antonio</option>
+              <option value ="Commerce" > Commerce</option>
+              <option value ="Coppell" > Coppell</option>
+              <option value ="Farmers Ranch" > Farmers Ranch</option>
+              <option value ="Addison" > Addison</option>
+              <option value ="Mckinney" > Mckinney</option>
+              <option value ="Plano" > Plano</option>
+              <option value ="Grapevine" > Grapevine</option>
+              <option value ="Wiley" > Wiley</option>
+              <option value ="Irving" > Irving</option>
+            </select></td>
+        </tr>
+          <tr>
+          <td>Depart Time</td>
+          <td><input type="text" [(ngModel)]="routelistModel.departTime"></td>
+          </tr>
+          <tr>
+          <td>Arrival Time</td>
+          <td><input type="text" [(ngModel)]="routelistModel.arrivalTime"></td>
+          </tr>
+          <tr>
+          <td>Status</td>
+          <td>
+            <select name="Status"[(ngModel)]="routelistModel.status">
+              <option> Choose Status</option>
+              <option value ="ON" > ON</option>
+              <option value ="OFF" > OFF</option>
+            </select>
+          </td>
+          </tr>
+          <input type="button" value="UPDATE" (click)="putRoute()" *ngIf="edit">
+      </table>
+   </div>     
+  
+  </body>

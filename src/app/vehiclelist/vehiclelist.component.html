@@ -1,0 +1,87 @@
+
+<body>
+
+  
+<div align="center" class="col-md-8">
+      <table  class="table table-hover">
+        <tr>
+          <th style="width:30px">ID</th>
+          <th style="width:50px">Year</th>
+          <th style="width:75px">Make</th>
+          <th style="width:75px">Reg No.</th>
+          <th style="width:75px">Type</th>
+          <th style="width:100px">Name</th>
+          <th style="width:60px">Status</th>
+          <th style="width:40px">Action</th>
+        </tr>
+        <tr *ngFor="let vehicle of vehicleList ">
+          <td> {{vehicle.vehicleId}}</td>
+          <td> {{vehicle.vehicleYear}}</td>
+          <td>{{vehicle.make}}</td>
+          <td>{{vehicle.regsNum}}</td>
+          <td>{{vehicle.type}}</td>
+          <td>{{vehicle.name}}</td>
+          <td>{{vehicle.status}}</td>
+          <td><input style="background-color: lightgreen" type="button" value="Edit" (click)="putButton(vehicle)"></td>
+          <td><input style="background-color: lightblue" type="button" value="Remove" (click)="deleteVehicle(vehicle.vehicleId)"></td>
+          
+        </tr>
+      </table>
+    </div>
+    <div>
+      <table>
+        <tr>
+        
+        <td>Search<span class="glyphicon glyphicon-search"></span></td>
+        <td><select [(ngModel)]="searchBy">
+          <option value="id">Id</option>
+          <option value="searchVehicleByName">Name</option>
+          </select></td>
+        <td><input type="text" [(ngModel)]="searchValue" (ngModelChange)="searchVehicle()"></td>
+        
+        </tr>
+        </table>
+        </div>
+
+    <div>
+    <table align="right" *ngIf="edit">
+       
+        <tr>
+           <td>Year</td>
+           <td><input type="text" [(ngModel)]="vehiclelistModel.vehicleYear"></td>
+        </tr>
+        <tr>
+          <td>Make</td>
+          <td><input type="text" [(ngModel)]="vehiclelistModel.make"></td>
+        </tr>
+          <tr>
+          <td>Registration Number</td>
+          <td><input type="text" [(ngModel)]="vehiclelistModel.regsNum"></td>
+          </tr>
+          <tr>
+          <td>Status</td>
+          <td><select name="Status"[(ngModel)]="vehiclelistModel.status">
+              <option> Choose Status</option>
+              <option value ="ON" > ON</option>
+              <option value ="OFF" > OFF</option>
+            </select>
+            </td>
+          </tr>
+          <tr>
+          <td>Type</td>
+          <td>
+            <select name="Type"[(ngModel)]="vehiclelistModel.type">
+              <option> Choose Type</option>
+              <option value ="Coupe" > Coupe</option>
+              <option value ="Sedan" > Sedan</option>
+              <option value ="SUV" > SUV</option>
+              <option value ="Truck" > Truck</option>
+              <option value ="MiniVan" > MiniVan</option>
+              <option value ="Bus" > Bus</option>
+            </select>
+          </td>
+          </tr>
+          <input type="button" value="UPDATE" (click)="putVehicle()" *ngIf="edit">
+      </table>
+      </div>
+</body>
